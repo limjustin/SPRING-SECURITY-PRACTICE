@@ -43,23 +43,23 @@ public class User implements UserDetails {
         return email;
     }
 
-    @Override  // 계정 만료 여부 반환
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override  // 계정 잠금 여부 반환
+    @Override  // (1) 계정 잠금 여부 반환
     public boolean isAccountNonLocked() {
-        return false;
+        return true;  // "User account is locked"
     }
 
-    @Override  // 패스워드 만료 여부 반환
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override  // 계정 사용 가능 여부 반환
+    @Override  // (2) 계정 사용 가능 여부 반환
     public boolean isEnabled() {
-        return false;
+        return true;  // "User is not enabled"
+    }
+
+    @Override  // (3) 계정 만료 여부 반환
+    public boolean isAccountNonExpired() {
+        return true;  // "User account has expired"
+    }
+
+    @Override  // (4) 패스워드 만료 여부 반환
+    public boolean isCredentialsNonExpired() {
+        return true;  // "User credentials have expired"
     }
 }
