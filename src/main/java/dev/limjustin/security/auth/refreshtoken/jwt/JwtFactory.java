@@ -1,7 +1,6 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.jwt;
 
 import io.jsonwebtoken.Header;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Builder;

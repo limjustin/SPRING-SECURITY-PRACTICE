@@ -1,5 +1,7 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.service;
 
+import dev.limjustin.security.auth.refreshtoken.domain.RefreshToken;
+import dev.limjustin.security.auth.refreshtoken.domain.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

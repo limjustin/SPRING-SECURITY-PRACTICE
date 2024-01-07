@@ -1,4 +1,4 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

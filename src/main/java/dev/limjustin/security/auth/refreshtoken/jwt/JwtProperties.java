@@ -1,4 +1,4 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.jwt;
 
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

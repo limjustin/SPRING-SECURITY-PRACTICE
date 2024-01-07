@@ -1,4 +1,4 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

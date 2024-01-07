@@ -1,4 +1,4 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

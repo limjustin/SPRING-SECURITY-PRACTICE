@@ -1,5 +1,6 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.jwt;
 
+import dev.limjustin.security.auth.refreshtoken.jwt.JwtProperties;
 import dev.limjustin.security.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
@@ -32,13 +33,13 @@ public class TokenProvider {
         Date now = new Date();
         return Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .setIssuer(jwtProperties.getIssuer())
-                .setIssuedAt(now)
-                .setExpiration(expiry)
-                .setSubject(user.getEmail())
-                .claim("id", user.getId())
+                .setIssuer(jwtProperties.getIssuer())  // Issuer 작성
+                .setIssuedAt(now)  // 이슈 시간 : 현재 시간으로 설정
+                .setExpiration(expiry)  // 만료 설정
+                .setSubject(user.getEmail())  // 이 부분은 잘 모르겠음
+                .claim("id", user.getId())  // 클레임 id : userId
                 // 서명
-                .signWith(jwtProperties.getKey(), SignatureAlgorithm.HS256)
+                .signWith(jwtProperties.getKey(), SignatureAlgorithm.HS256)  // 암호화 된 비밀키 값 + 해시를 HS256 방식으로 암호화
                 .compact();
     }
 

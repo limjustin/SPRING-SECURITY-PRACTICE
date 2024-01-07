@@ -1,4 +1,4 @@
-package dev.limjustin.security;
+package dev.limjustin.security.auth.refreshtoken.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
