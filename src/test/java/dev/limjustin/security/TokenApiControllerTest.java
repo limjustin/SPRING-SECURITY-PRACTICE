@@ -1,7 +1,7 @@
 package dev.limjustin.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.limjustin.security.auth.refreshtoken.jwt.JwtFactory;
+import dev.limjustin.security.auth.controller.JwtFactory;
 import dev.limjustin.security.auth.refreshtoken.jwt.JwtProperties;
 import dev.limjustin.security.auth.refreshtoken.domain.RefreshToken;
 import dev.limjustin.security.auth.refreshtoken.domain.RefreshTokenRepository;

@@ -1,6 +1,5 @@
 package dev.limjustin.security.auth.refreshtoken.jwt;
 
-import dev.limjustin.security.auth.refreshtoken.jwt.JwtProperties;
 import dev.limjustin.security.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
@@ -23,7 +22,7 @@ public class TokenProvider {
 
     private final JwtProperties jwtProperties;
 
-    public String generatedToken(User user, Duration expiredAt) {
+    public String generateToken(User user, Duration expiredAt) {
         Date now = new Date();
         return makeToken(new Date(now.getTime() + expiredAt.toMillis()), user);
     }
@@ -32,13 +31,15 @@ public class TokenProvider {
     private String makeToken(Date expiry, User user) {
         Date now = new Date();
         return Jwts.builder()
+                // Header
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .setIssuer(jwtProperties.getIssuer())  // Issuer 작성
-                .setIssuedAt(now)  // 이슈 시간 : 현재 시간으로 설정
-                .setExpiration(expiry)  // 만료 설정
-                .setSubject(user.getEmail())  // 이 부분은 잘 모르겠음
+                // Payload
+                .setIssuer(jwtProperties.getIssuer())  // 토큰 발급자 (issuer)
+                .setSubject(user.getEmail())  // 토큰 제목 (subject)
+                .setExpiration(expiry)  // 토큰의 만료 시간 (expiration)
+                .setIssuedAt(now)  // 토큰이 발급된 시간 (issued at)
                 .claim("id", user.getId())  // 클레임 id : userId
-                // 서명
+                // Signature
                 .signWith(jwtProperties.getKey(), SignatureAlgorithm.HS256)  // 암호화 된 비밀키 값 + 해시를 HS256 방식으로 암호화
                 .compact();
     }
@@ -59,6 +60,7 @@ public class TokenProvider {
     // 토큰 기반으로 인증 정보를 가져오는 메서드
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
+        System.out.println("claims.getId() = " + claims.getId());
         Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
 
         return new UsernamePasswordAuthenticationToken(new org.springframework.security.core.userdetails.User(

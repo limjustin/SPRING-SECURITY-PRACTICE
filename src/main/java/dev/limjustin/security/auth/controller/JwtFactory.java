@@ -1,5 +1,6 @@
-package dev.limjustin.security.auth.refreshtoken.jwt;
+package dev.limjustin.security.auth.controller;
 
+import dev.limjustin.security.auth.refreshtoken.jwt.JwtProperties;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
